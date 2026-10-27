@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Димасик — мой маленький мир</title>
+<style>
+:root{--bg:#030b16;--panel:#071626;--panel2:#091d31;--line:#123452;--blue:#21b9ff;--cyan:#61e4ff;--text:#e7f4ff;--muted:#9bb9d7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#10345b 0,transparent 50%),var(--bg);color:var(--text);font:16px/1.5 "Segoe UI",Arial,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 4%;background:#030b16eF;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.brand{font-size:22px;font-weight:700;letter-spacing:.5px}.brand span{color:var(--blue)}.brand small{display:block;font-size:11px;color:var(--muted);font-weight:400;letter-spacing:1px}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav a,.theme{padding:9px 13px;border:1px solid transparent;border-radius:12px;color:var(--muted);background:transparent}nav a:hover,nav a.active,.theme:hover{border-color:var(--line);background:#0a2037;color:var(--cyan)}
+.wrap{width:min(1400px,94%);margin:24px auto;display:grid;grid-template-columns:210px minmax(0,1fr) 240px;gap:20px}
+.side{position:sticky;top:88px;align-self:start}.side h3{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#7196b8;margin:8px 10px 12px}.side a{display:block;padding:11px 13px;margin:4px 0;border-radius:10px;color:var(--muted)}.side a:hover{background:#0b2138;color:var(--cyan)}
+.hero{min-height:300px;border:1px solid #17456c;border-radius:22px;overflow:hidden;position:relative;display:flex;align-items:center;padding:clamp(25px,5vw,55px);background:linear-gradient(90deg,#03101ff5 0%,#041426db 42%,#04142650 100%),url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=85') center/cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#03101d 0,transparent 40%);pointer-events:none}.hero-content{position:relative;z-index:1;max-width:530px}.eyebrow{color:var(--cyan);letter-spacing:3px;text-transform:uppercase;font-size:12px}.hero h1{font-size:clamp(34px,5vw,62px);line-height:1.06;margin:12px 0}.hero p{color:#c0d8ef;max-width:470px}.btn{display:inline-block;margin-top:12px;padding:11px 18px;border:1px solid var(--blue);border-radius:999px;color:#fff;background:#0879b52a;box-shadow:0 0 22px #159ce322;transition:.2s}.btn:hover{background:#0a86c9;transform:translateY(-2px)}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:28px 2px 14px}.section-title h2{font-size:20px;margin:0}.section-title span{color:var(--muted);font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card,.panel{border:1px solid var(--line);background:linear-gradient(145deg,#091d30,#05111f);border-radius:17px;padding:19px;transition:.2s}.card:hover{border-color:#197eb2;transform:translateY(-3px);box-shadow:0 12px 32px #0005}.emoji{font-size:27px}.card h3{margin:8px 0 5px}.card p{color:var(--muted);font-size:14px;margin:0 0 10px}.tag{display:inline-block;border:1px solid #17496b;color:var(--cyan);font-size:11px;padding:3px 8px;border-radius:20px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{min-height:110px;border:1px solid var(--line);border-radius:13px;display:flex;align-items:end;padding:12px;background:linear-gradient(145deg,#0c3150,#071322);overflow:hidden;position:relative}.tile:nth-child(2){background:linear-gradient(145deg,#263a57,#0a1726)}.tile:nth-child(3){background:linear-gradient(145deg,#075046,#071322)}.tile:nth-child(4){background:linear-gradient(145deg,#36264f,#071322)}.tile:nth-child(5){background:linear-gradient(145deg,#123e63,#071322)}.tile:nth-child(6){background:linear-gradient(145deg,#533d6a,#071322)}.tile strong{position:relative;z-index:1}.tile:before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:#3fc8ff17;right:-25px;top:-40px}
+.right{display:flex;flex-direction:column;gap:14px}.panel h3{font-size:14px;margin:0 0 10px}.clock{font-size:34px;color:var(--cyan);font-variant-numeric:tabular-nums}.muted{color:var(--muted);font-size:13px}.links{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.links a{padding:10px 2px;text-align:center;border-radius:10px;color:var(--muted);font-size:12px}.links a b{display:block;font-size:20px;color:var(--cyan);margin-bottom:3px}.links a:hover{background:#0d2942;color:white}.note{color:#b9d4ed;font-size:14px}.footer{text-align:center;color:#6f91af;border-top:1px solid var(--line);padding:22px;margin-top:35px;font-size:12px}
+body.light{--bg:#eaf4fc;--panel:#fff;--panel2:#e3f0fa;--line:#bfd8ec;--text:#10283e;--muted:#476984;background:radial-gradient(ellipse at 50% -20%,#b6e5ff 0,transparent 50%),var(--bg)}body.light .top{background:#edf7f5ed}body.light .card,body.light .panel{background:linear-gradient(145deg,#fff,#edf7ff)}body.light .hero{color:white}
+@media(max-width:1000px){.wrap{grid-template-columns:1fr 230px}.side{display:none}.main{min-width:0}}
+@media(max-width:700px){.top{align-items:flex-start;flex-direction:column}.top nav{gap:2px}.wrap{grid-template-columns:1fr;margin:14px auto}.right{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:270px}.cards{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.right{grid-template-columns:1fr}.top nav a{padding:7px 9px;font-size:13px}.hero{padding:22px}.gallery{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#home">◈ Димасик<span>.</span><small>МОЙ МАЛЕНЬКИЙ МИР</small></a>
+  <nav aria-label="Главное меню">
+    <a class="active" href="#home">Главная</a><a href="#projects">Проекты</a><a href="#gallery">Галерея</a><a href="#links">Ссылки</a>
+  </nav>
+  <button class="theme" id="themeBtn" aria-label="Переключить тему">☼ Тема</button>
+</header>
+<div class="wrap" id="home">
+  <aside class="side">
+    <h3>Навигация</h3>
+    <a href="#home">⌂ Главная</a><a href="#projects">▣ Мои проекты</a><a href="#gallery">▧ Галерея</a><a href="#links">↗ Полезное</a>
+    <div class="panel" style="margin-top:22px"><div class="emoji">🐈</div><strong>Уютный уголок</strong><p class="muted">Немного техники, игр и котиков.</p></div>
+  </aside>
+  <main class="main">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Личный цифровой мир</div>
+        <h1>Привет,<br>исследователь.</h1>
+        <p>Добро пожаловать в мой уголок интернета. Здесь живут идеи, старые компьютеры, игры и всякие интересные штуки.</p>
+        <a class="btn" href="#projects">Исследовать сайт&nbsp; ↗</a>
+      </div>
+    </section>
+    <div class="section-title" id="projects"><h2>✦ Что здесь есть</h2><span>4 раздела</span></div>
+    <section class="cards">
+      <article class="card"><div class="emoji">🖥️</div><h3>Техно-гараж</h3><p>Компьютеры, старые гаджеты и эксперименты с железом.</p><span class="tag">TECH</span></article>
+      <article class="card"><div class="emoji">🎮</div><h3>Игровая</h3><p>Любимые игры, маленькие челленджи и игровые заметки.</p><span class="tag">GAMES</span></article>
+      <article class="card"><div class="emoji">🐟</div><h3>Подводный мир</h3><p>Рыбки, креветки и зелёные водоросли — маленькая экосистема.</p><span class="tag">AQUA</span></article>
+      <article class="card"><div class="emoji">🐾</div><h3>Пушистый отдел</h3><p>Котики и другие хвостатые личности, которые тут главные.</p><span class="tag">PETS</span></article>
+    </section>
+    <div class="section-title" id="gallery"><h2>▧ Мини-галерея</h2><span>Вдохновение</span></div>
+    <section class="gallery">
+      <div class="tile"><strong>🌃 Ночной город</strong></div><div class="tile"><strong>🐈 Кото-момент</strong></div><div class="tile"><strong>🌿 Аквариум</strong></div><div class="tile"><strong>💿 Ретро-техника</strong></div><div class="tile"><strong>🌌 Космос</strong></div><div class="tile"><strong>🌅 Закат</strong></div>
+    </section>
+  </main>
+  <aside class="right">
+    <section class="panel"><h3>◷ Текущее время</h3><div class="clock" id="clock">--:--:--</div><div class="muted" id="date"></div></section>
+    <section class="panel"><h3>⚡ Быстрые ссылки</h3><div class="links" id="links">
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener"><b>▶</b>YouTube</a>
+      <a href="https://store.steampowered.com/" target="_blank" rel="noopener"><b>◉</b>Steam</a>
+      <a href="https://www.google.com/" target="_blank" rel="noopener"><b>G</b>Google</a>
+      <a href="https://www.wikipedia.org/" target="_blank" rel="noopener"><b>W</b>Wiki</a>
+      <a href="https://github.com/" target="_blank" rel="noopener"><b>⌘</b>GitHub</a>
+      <a href="https://www.opera.com/" target="_blank" rel="noopener"><b>◉</b>Opera</a>
+    </div></section>
+    <section class="panel"><h3>✎ Заметка дня</h3><p class="note" id="note">Большие идеи начинаются с маленького эксперимента.</p><button class="btn" id="noteBtn" style="font-size:12px;padding:7px 12px">Новая мысль</button></section>
+    <section class="panel"><h3>Система</h3><p class="muted">Статус: <span style="color:#59e4a5">● Всё работает</span></p><p class="muted">Версия сайта: 1.0</p></section>
+  </aside>
+</div>
+<footer class="footer">Сделано с ⚡ и любопытством · Личный сайт · 2026</footer>
+<script>
+const clock=document.getElementById('clock'),date=document.getElementById('date');
+function tick(){const d=new Date();clock.textContent=d.toLocaleTimeString('ru-RU');date.textContent=d.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'});}
+tick();setInterval(tick,1000);
+document.getElementById('themeBtn').addEventListener('click',()=>{document.body.classList.toggle('light');});
+const notes=['Большие идеи начинаются с маленького эксперимента.','Старые устройства тоже заслуживают второй шанс.','Сначала попробуй — потом улучшай.','Немного любопытства превращает день в приключение.','Даже самый крутой проект начинается с первой строки кода.'];
+let ni=0;document.getElementById('noteBtn').addEventListener('click',()=>{ni=(ni+1)%notes.length;document.getElementById('note').textContent=notes[ni];});
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active');}));
+</script>
+</body>
+</html>
