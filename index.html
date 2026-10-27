@@ -1,127 +1,389 @@
-<footer>ULTRASITE · 2026</footer>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ULTRASITE · 2026</title>
+<style>
+:root {
+  --green:#a8ef45;
+  --lime:#dcff9e;
+  --bg:#f6fbea;
+  --card:#fff;
+  --text:#1d2b1c;
+  --muted:#667363;
+  --border:#dce8d0;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+header {
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:16px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.brand { display:flex; align-items:center; gap:12px; }
+.logo {
+  width:54px;height:54px;background:var(--green);
+  border:3px solid #1d2b1c;border-radius:45% 45% 50% 50%;
+  display:grid;place-items:center;font-size:30px;
+}
+.brand h2 { margin:0;letter-spacing:2px; }
+.brand small { color:var(--muted); }
+nav { display:flex;gap:7px;flex-wrap:wrap; }
+button {
+  border:1px solid var(--border);
+  border-radius:12px;padding:10px 14px;
+  background:#fff;color:var(--text);
+  font-weight:bold;cursor:pointer;
+}
+button:hover { background:var(--lime); }
+button.active,.primary { background:var(--green);border-color:var(--green); }
+main { max-width:1100px;margin:auto;padding:24px 18px; }
+.page { display:none; }
+.page.active { display:block; }
+.hero {
+  background:linear-gradient(120deg,#e4ffb7,#b7f36b);
+  padding:clamp(25px,6vw,60px);
+  border:1px solid #c8eb97;border-radius:28px;
+}
+.hero h1 { font-size:clamp(42px,8vw,76px);line-height:1;margin:12px 0; }
+.hero p { max-width:620px;font-size:18px; }
+.eyebrow { font-weight:bold;letter-spacing:3px;font-size:12px; }
+.actions { display:flex;gap:9px;flex-wrap:wrap;margin-top:20px; }
+h2 { margin-top:30px; }
+.grid {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:15px;
+}
+.card {
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:20px;min-width:0;
+  box-shadow:0 5px 20px #304a2010;
+}
+.card h3 { margin:6px 0; }
+.card p { color:var(--muted);margin:7px 0; }
+.emoji { font-size:34px; }
+.tag {
+  display:inline-block;background:#eff9df;border-radius:20px;
+  padding:4px 10px;font-size:12px;margin:4px 4px 0 0;
+}
+.specs { display:grid;grid-template-columns:120px 1fr;gap:8px; }
+.specs div:nth-child(odd) { color:var(--muted); }
+label { display:block;font-weight:bold;margin:12px 0 5px; }
+input,textarea,select {
+  width:100%;padding:12px;border:1px solid #cbdac0;
+  border-radius:10px;font:inherit;background:white;
+}
+textarea { min-height:110px;resize:vertical; }
+.form { max-width:650px; }
+.notice {
+  background:#fff6d9;padding:12px;border-radius:12px;
+  margin-top:15px;font-size:14px;
+}
+.entry { overflow-wrap:anywhere; }
+footer { text-align:center;padding:25px;color:var(--muted); }
+[hidden] { display:none!important; }
+@media(max-width:600px) {
+  header { padding:14px; }
+  nav { width:100%; }
+  nav button { flex:1;padding:9px 5px; }
+  .specs { grid-template-columns:1fr;gap:2px; }
+  .specs div:nth-child(odd) { margin-top:8px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo">🐱</div>
+    <div>
+      <h2>ULTRASITE</h2>
+      <small>A site that has a lot about me and my hobbies.</small>
+    </div>
+  </div>
+  <nav>
+    <button class="active" data-page="home" onclick="showPage('home')">Главная</button>
+    <button data-page="tech" onclick="showPage('tech')">Техника</button>
+    <button data-page="cats" onclick="showPage('cats')">Коты</button>
+    <button data-page="fish" onclick="showPage('fish')">Рыбки</button>
+    <button data-page="games" onclick="showPage('games')">Игры</button>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="eyebrow">МОЙ УГОЛОК В ИНТЕРНЕТЕ</div>
+    <h1>Привет.<br>Это ULTRASITE.</h1>
+    <p>Мой сайт о технике, старых телефонах, котах, рыбках, креветках и любимых играх. Всё самое интересное — в одном месте!</p>
+    <div class="actions">
+      <button class="primary" onclick="showPage('tech')">Моя техника →</button>
+      <button onclick="showPage('cats')">Котобанда 🐾</button>
+      <button onclick="showPage('add')">＋ Добавить запись</button>
+    </div>
+  </div>
+  <h2>Разделы сайта</h2>
+  <div class="grid">
+    <article class="card"><div class="emoji">🖥️</div><h3>Техника</h3><p>Мой ПК на Windows 7, телефоны и гаджеты.</p><button onclick="showPage('tech')">Открыть</button></article>
+    <article class="card"><div class="emoji">🐈</div><h3>Коты</h3><p>Юзь, Фря и Черта.</p><button onclick="showPage('cats')">Открыть</button></article>
+    <article class="card"><div class="emoji">🐠</div><h3>Аквариум</h3><p>Гуппи, креветки и водные растения.</p><button onclick="showPage('fish')">Открыть</button></article>
+    <article class="card"><div class="emoji">🎮</div><h3>Игры</h3><p>CS 1.6, Minecraft и Geometry Dash.</p><button onclick="showPage('games')">Открыть</button></article>
+  </div>
+  <h2>Мои записи</h2>
+  <div id="entries" class="grid"></div>
+</section>
+
+<section id="tech" class="page">
+  <h2>🖥️ Мой компьютер</h2>
+  <div class="grid">
+    <article class="card">
+      <h3>Основной ПК</h3>
+      <div class="specs">
+        <div>ОС</div><div>Windows 7 Ultimate</div>
+        <div>Процессор</div><div>Intel Pentium, 1.6 GHz</div>
+        <div>Видеокарта</div><div>NVIDIA GeForce 8500 GT</div>
+        <div>ОЗУ</div><div>2 GB DDR2</div>
+        <div>Материнская плата</div><div>Intel 945GZ Micro 775SE</div>
+        <div>Корпус</div><div>Huntkey T71-A, чёрно-красный</div>
+        <div>Привод</div><div>DVD-RW</div>
+        <div>Веб-камера</div><div>Venus USB 2.0 Camera</div>
+      </div>
+      <p>Хочу недорогую видеокарту с HDMI.</p>
+    </article>
+    <article class="card">
+      <h3>💾 Мои накопители</h3>
+      <p>• HDD в ПК — 500 GB</p>
+      <p>• HDD от старых ноутбуков — 500 + 500 GB</p>
+      <p>• SSD — 240 GB</p>
+      <p>Общая ёмкость всех четырёх накопителей — около 1.74 TB.</p>
+    </article>
+    <article class="card">
+      <h3>📱 Redmi Note 9 Pro</h3>
+      <p>Android 10 · 64 GB · SIM Vodafone.</p>
+      <p>Заднее стекло и защита камеры повреждены после падения.</p>
+    </article>
+    <article class="card">
+      <h3>📱 Samsung Galaxy Grand Prime</h3>
+      <p>SM-G531F · Android 5.1.1 Lollipop.</p>
+      <p>Сборка: LMY48B.G531FXXU1APG2.</p>
+    </article>
+    <article class="card">
+      <h3>📱 LG Optimus L5 II Dual</h3>
+      <p>E455 · Flower White · Android 4.1.2 · две SIM-карты.</p>
+    </article>
+    <article class="card">
+      <h3>📱 Redmi A2</h3>
+      <p>Повреждённый и разобранный телефон. Боковые кнопки не работают из-за шлейфа.</p>
+    </article>
+    <article class="card">
+      <h3>☎️ Tecno T349</h3>
+      <p>Кнопочный телефон, интересны старые Java-игры.</p>
+      <p>Прошивка: T349-DL181A1-EU-UA-180702V3.</p>
+    </article>
+    <article class="card">
+      <h3>⌚ Smart Band M5</h3>
+      <p>Модель LP715(G). Уведомления WhatsApp и Facebook.</p>
+    </article>
+    <article class="card">
+      <h3>🔊 Luxeon LX-1900</h3>
+      <p>Мини-сабвуфер, найденный на балконе. Работает и выдаёт басы.</p>
+    </article>
+    <article class="card">
+      <h3>🎮 Руль Logitech</h3>
+      <p>Formula Vibration Feedback Wheel с педалями.</p>
+    </article>
+  </div>
+</section>
+
+<section id="cats" class="page">
+  <h2>🐈 Моя котобанда</h2>
+  <div class="grid">
+    <article class="card"><div class="emoji">🤍</div><h3>Юзь</h3><p>Белый с пятнышками. Любит одеяла, обнимашки и громко мурчит.</p><span class="tag">Мурлыка</span></article>
+    <article class="card"><div class="emoji">🐈</div><h3>Фря</h3><p>Трёхцветная, тихая, стерилизована. Обычно прячется от незнакомцев.</p><span class="tag">Тихоня</span></article>
+    <article class="card"><div class="emoji">🐈‍⬛</div><h3>Черта</h3><p>Чёрная кошка с очень выразительным голосом.</p><span class="tag">Голосистая</span></article>
+  </div>
+</section>
+
+<section id="fish" class="page">
+  <h2>🐟 Рыбки, креветки и растения</h2>
+  <div class="grid">
+    <article class="card"><div class="emoji">🐠</div><h3>Самец гуппи</h3><p>Активный, гоняется за креветками, но иногда сам от них отступает.</p></article>
+    <article class="card"><div class="emoji">🐟</div><h3>Самка гуппи</h3><p>Беременная самка. Будем ждать мальков!</p></article>
+    <article class="card"><div class="emoji">🦐</div><h3>Две мини-креветки</h3><p>Одна синяя, другая красная. Точный вид пока неизвестен.</p></article>
+    <article class="card"><div class="emoji">🌿</div><h3>Водные растения</h3><p>Есть растение, похожее на уруть. Хочется, чтобы оно разрослось.</p></article>
+  </div>
+  <div class="notice">На будущее: гуппи нужен более просторный аквариум, чем 5 литров, с подходящей фильтрацией и стабильными условиями.</div>
+</section>
+
+<section id="games" class="page">
+  <h2>🎮 Мои игры</h2>
+  <div class="grid">
+    <article class="card"><div class="emoji">🔫</div><h3>Counter-Strike 1.6 Gold Edition</h3><p>Классическая CS 1.6 на Windows 7.</p></article>
+    <article class="card"><div class="emoji">⛏️</div><h3>Minecraft Java 1.8.9</h3><p>KitPvP, MineBlaze и 1v1.</p></article>
+    <article class="card"><div class="emoji">🎵</div><h3>Geometry Dash</h3><p>Мой ID: <strong>149227820</strong>.</p></article>
+    <article class="card"><div class="emoji">🎹</div><h3>Dance Cube</h3><p>Игра из детских воспоминаний. Запомнились уровни с пианино, часами и городом.</p></article>
+  </div>
+</section>
+
+<section id="add" class="page">
+  <h2>＋ Добавить запись</h2>
+  <div class="card form">
+    <p>Введи пароль, чтобы открыть форму редактора.</p>
+    <label for="password">Пароль редактора</label>
+    <input id="password" type="password" autocomplete="off">
+    <div class="actions"><button class="primary" onclick="login()">Войти</button></div>
+    <p id="loginError" style="color:#b3261e" role="status"></p>
+    <div id="editor" hidden>
+      <label for="title">Заголовок</label>
+      <input id="title" maxlength="100" placeholder="Название записи">
+      <label for="category">Раздел</label>
+      <select id="category">
+        <option>Техника</option><option>Коты</option>
+        <option>Рыбки</option><option>Игры</option><option>Другое</option>
+      </select>
+      <label for="description">Описание</label>
+      <textarea id="description" maxlength="3000" placeholder="Текст записи"></textarea>
+      <div class="actions">
+        <button class="primary" onclick="addEntry()">Сохранить</button>
+        <button onclick="logout()">Выйти</button>
+      </div>
+    </div>
+    <div class="notice">Демо-редактор: записи сохраняются только в браузере, где их добавили. Пароль в HTML не является надёжной защитой и виден в исходном коде.</div>
+  </div>
+</section>
+</main>
+
+<footer>ULTRASITE © 2026 · Сделано с 💚</footer>
 
 <script>
-const ADD_PASSWORD = "14882014160100001234";
+const EDITOR_PASSWORD = "14882014160100001234";
+const STORAGE_KEY = "ultrasite_entries_v1";
+let unlocked = false;
 
-const categories = {
-  tech: {
-    title: "🖥️ Моя техника",
-    description: "Компьютеры, телефоны и другие устройства."
-  },
-  cats: {
-    title: "🐈 Мои коты",
-    description: "Истории и фотографии моих котиков."
-  },
-  fish: {
-    title: "🐟 Мой подводный мир",
-    description: "Рыбки, креветки и аквариумные растения."
-  },
-  games: {
-    title: "🎮 Мои игры",
-    description: "Любимые игры, достижения и скриншоты."
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(page =>
+    page.classList.toggle("active", page.id === id)
+  );
+  document.querySelectorAll("nav button").forEach(button =>
+    button.classList.toggle("active", button.dataset.page === id)
+  );
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function login() {
+  const pass = document.getElementById("password").value;
+  const error = document.getElementById("loginError");
+  if (pass !== EDITOR_PASSWORD) {
+    error.textContent = "Неверный пароль.";
+    return;
   }
-};
+  unlocked = true;
+  error.textContent = "";
+  document.getElementById("editor").hidden = false;
+  document.getElementById("password").value = "";
+  renderEntries();
+}
 
-let currentPage = "home";
+function logout() {
+  unlocked = false;
+  document.getElementById("editor").hidden = true;
+  document.getElementById("loginError").textContent = "";
+  showPage("home");
+  renderEntries();
+}
 
-function getEntries(category) {
+function readEntries() {
   try {
-    return JSON.parse(localStorage.getItem("ultrasite_" + category)) || [];
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return Array.isArray(data) ? data : [];
   } catch {
     return [];
   }
 }
 
-function openPage(page) {
-  currentPage = page;
-  document.getElementById("home").classList.toggle("hidden", page !== "home");
-  document.getElementById("category").classList.toggle("hidden", page === "home");
-  document.getElementById("editor").classList.add("hidden");
-
-  if (page === "home") return;
-
-  document.getElementById("pageTitle").textContent = categories[page].title;
-  document.getElementById("pageDescription").textContent = categories[page].description;
-  renderEntries();
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  })[char]);
 }
 
 function renderEntries() {
   const container = document.getElementById("entries");
-  container.replaceChildren();
-
-  const entries = getEntries(currentPage);
+  const entries = readEntries();
 
   if (!entries.length) {
-    const empty = document.createElement("p");
-    empty.className = "muted";
-    empty.textContent = "Пока здесь пусто. Можно добавить первую запись!";
-    container.appendChild(empty);
+    container.innerHTML = '<p class="card">Пока записей нет. Нажми «Добавить запись».</p>';
+    return;
   }
 
-  entries.forEach(entry => {
-    const card = document.createElement("article");
-    card.className = "entry";
-
-    const title = document.createElement("h3");
-    title.textContent = entry.title;
-    card.appendChild(title);
-
-    const description = document.createElement("p");
-    description.textContent = entry.text || "";
-    card.appendChild(description);
-
-    if (entry.image && /^https?:\/\//i.test(entry.image)) {
-      const image = document.createElement("img");
-      image.src = entry.image;
-      image.alt = entry.title;
-      image.loading = "lazy";
-      card.appendChild(image);
-    }
-
-    container.appendChild(card);
-  });
+  container.innerHTML = entries.slice().reverse().map(entry => `
+    <article class="card entry">
+      <span class="tag">${escapeHTML(entry.category)}</span>
+      <h3>${escapeHTML(entry.title)}</h3>
+      <p>${escapeHTML(entry.description).replace(/\n/g,"<br>")}</p>
+      <small>${escapeHTML(entry.date)}</small>
+      ${unlocked ? `<div class="actions"><button onclick="deleteEntry('${entry.id}')">Удалить</button></div>` : ""}
+    </article>
+  `).join("");
 }
 
 function addEntry() {
-  const password = prompt("Введи пароль для добавления записи:");
-  if (password === null) return;
+  if (!unlocked) return;
 
-  if (password !== ADD_PASSWORD) {
-    alert("Неверный пароль!");
+  const title = document.getElementById("title").value.trim();
+  const category = document.getElementById("category").value;
+  const description = document.getElementById("description").value.trim();
+
+  if (!title || !description) {
+    alert("Заполни заголовок и описание.");
     return;
   }
 
-  document.getElementById("entryForm").reset();
-  document.getElementById("category").classList.add("hidden");
-  document.getElementById("editor").classList.remove("hidden");
-}
-
-document.getElementById("entryForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  const title = document.getElementById("entryTitle").value.trim();
-  const text = document.getElementById("entryText").value.trim();
-  const image = document.getElementById("entryImage").value.trim();
-
-  if (!title) return;
-
-  if (image && !/^https?:\/\//i.test(image)) {
-    alert("Ссылка на фото должна начинаться с http:// или https://");
-    return;
-  }
-
-  const entries = getEntries(currentPage);
-  entries.push({ title, text, image });
+  const entries = readEntries();
+  entries.push({
+    id: Date.now().toString(),
+    title,
+    category,
+    description,
+    date: new Date().toLocaleDateString("ru-RU")
+  });
 
   try {
-    localStorage.setItem("ultrasite_" + currentPage, JSON.stringify(entries));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
   } catch {
-    alert("Не удалось сохранить запись. Возможно, закончилось место.");
+    alert("Не удалось сохранить запись в этом браузере.");
     return;
   }
 
-  openPage(currentPage);
-});
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
+  renderEntries();
+  showPage("home");
+}
+
+function deleteEntry(id) {
+  if (!unlocked) return;
+  if (!confirm("Удалить эту запись?")) return;
+  const entries = readEntries().filter(entry => entry.id !== id);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+  renderEntries();
+}
+
+renderEntries();
 </script>
 </body>
-</html>
+  </html>
+      
